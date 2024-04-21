@@ -1,0 +1,28 @@
+[project]
+name = "nlp_cw"
+dynamic = ["version"]
+requires-python = ">= 3.8"
+dependencies = [
+  "torch",
+  "accelerate",
+  "transformers",
+  "datasets",
+  "evaluate",
+  "seqeval",
+  "tensorboard",
+  "simple_parsing",
+]
+
+[project.optional-dependencies]
+tensorboard = ["tensorboard"]
+
+[project.scripts]
+nlpcw_train = "nlp_cw:main_cli"
+
+[tool.black]
+line-length = 88
+target-version = ['py37']
+include = '\.pyi?$'
+
+[build-system]
+requires = ["setuptools", "wheel"]
