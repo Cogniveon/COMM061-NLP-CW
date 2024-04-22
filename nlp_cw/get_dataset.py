@@ -34,6 +34,6 @@ def get_dataset(dataset_name: str, expected_labels: list[str]) -> DatasetDict:
     dataset = dataset.remove_columns(["pos_tags"])
 
     label_list = dataset["train"].features["ner_tags"].feature.names
-    logger.debug("NER labels: %", label_list)
+    logger.debug("NER labels: %s", label_list)
 
     return dataset, id2label, label2id, label_list, num_labels

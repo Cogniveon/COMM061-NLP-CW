@@ -1,10 +1,7 @@
-import logging
 from datasets import DatasetDict
 from transformers import (
     AutoTokenizer,
 )
-
-logger = logging.getLogger(__name__)
 
 
 def tokenize_and_align_labels(

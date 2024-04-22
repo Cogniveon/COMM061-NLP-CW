@@ -1,4 +1,3 @@
-import logging
 import numpy as np
 import evaluate
 from transformers import (
@@ -11,8 +10,6 @@ from transformers import (
     EarlyStoppingCallback,
 )
 from datasets import DatasetDict
-
-logger = logging.getLogger(__name__)
 
 
 def init_trainer(
