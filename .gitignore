@@ -1,5 +1,6 @@
 venv
-runs
+experiments
+wandb
 **/*.egg-info/**
 **/__pycache__/**
 *.log

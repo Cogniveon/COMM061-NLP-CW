@@ -1,3 +1,4 @@
+from typing import Any
 import numpy as np
 import evaluate
 from transformers import (
@@ -22,6 +23,7 @@ def init_trainer(
     num_epochs: int,
     model_name_or_path: str,
     dataset: DatasetDict,
+    **trainer_kwargs: dict[str, Any],
 ):
     metric = evaluate.load("seqeval")
     data_collator = DataCollatorForTokenClassification(tokenizer)
@@ -57,11 +59,10 @@ def init_trainer(
     )
 
     model_name = model_name_or_path.split("/")[-1]
-    output_dir = f"experiments/{model_name}-abbr"
+    output_dir = f"experiments/nlp_cw_{model_name}-abbr"
     args = TrainingArguments(
         output_dir,
         overwrite_output_dir=True,
-        report_to="tensorboard",
         evaluation_strategy="epoch",
         save_strategy="epoch",
         logging_steps=50,
@@ -71,9 +72,9 @@ def init_trainer(
         per_device_eval_batch_size=batch_size,
         num_train_epochs=num_epochs,
         weight_decay=0.001,
-        # push_to_hub=True,
         metric_for_best_model="f1",
         load_best_model_at_end=True,
+        **trainer_kwargs,
     )
 
     trainer = Trainer(

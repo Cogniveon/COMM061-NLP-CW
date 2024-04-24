@@ -6,6 +6,8 @@ from nlp_cw.get_dataset import get_dataset
 from nlp_cw.tokenize_dataset import tokenize_dataset
 from nlp_cw.trainer import init_trainer
 
+__version__ = "0.0.1"
+
 
 @dataclass
 class TrainerConfig:
