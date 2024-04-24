@@ -1,3 +1,4 @@
+import os
 from typing import Any
 import numpy as np
 import evaluate
@@ -59,9 +60,9 @@ def init_trainer(
     )
 
     model_name = model_name_or_path.split("/")[-1]
-    output_dir = f"experiments/nlp_cw_{model_name}-abbr"
+    run_name = f"nlpcw_{model_name}-abbr"
     args = TrainingArguments(
-        output_dir,
+        output_dir=os.path.join("experiments", run_name),
         overwrite_output_dir=True,
         evaluation_strategy="epoch",
         save_strategy="epoch",
